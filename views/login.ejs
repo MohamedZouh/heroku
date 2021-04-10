@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+ <%- include('layouts/header'); -%>
+<body>
+  <%- include('layouts/nav_bar'); -%>
+  
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('/img/contact-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="page-heading">
+            <h1>login</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <!-- Contact Form - Enter your email address on line 19 of the mail/contact_me.php file to make this form work. -->
+        <!-- WARNING: Some web hosts do not allow emails to be sent through forms to common mail hosts like Gmail or Yahoo. It's recommended that you use a private domain email address! -->
+        <!-- To use the contact form, your site must be on a live web host with PHP! The form will not work locally! -->
+        <% if(errors != null && errors.length > 0){ %>
+            <ul class="list-group">
+                <% for (var i = 0; i < errors.length; i++) { %>
+                    <li class="list-group-item list-group-item-danger"><%= errors[i] %></li>
+                <% } %>
+            </ul>
+        <% } %>
+        <form action="/users/login" method="POST">
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Username</label>
+              <input 
+                rows="5" 
+                    class="form-control" 
+                    placeholder="Username" 
+                    id="username" 
+                    name="username"
+                    value="<%= username %>"
+                >
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+                <label>Password</label>
+                <input 
+                    type="password"    
+                    class="form-control" 
+                    placeholder="Password" 
+                    id="password"
+                    name="password"
+                > 
+            </div>
+          </div>
+          <br>
+          <div id="success"></div>
+          <button type="submit" class="btn btn-primary" id="sendMessageButton">login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <%- include('layouts/footer'); -%>
+  <%- include('layouts/scripts'); -%>
+  
+</body>
+
+</html>
